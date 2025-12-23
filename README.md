@@ -204,55 +204,6 @@
 
 ---
 
-## 📸 Screenshots
-
-### Dashboard with Pregnancy Widget
-Beautiful dashboard showing pregnancy progress, upcoming due date, and quick access to all features.
-
-![Dashboard with Pregnancy Widget](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/dashboard_pregnancy_widget_1766425867556.png)
-
-### User Profile Page
-Comprehensive profile management with 5 tabs: Personal Info, Pregnancy, Health Metrics, Medical History, and Emergency Contact.
-
-![User Profile Page](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/user_profile_1766425891114.png)
-
-### Exercise Library
-Grid of pregnancy-safe exercises with filters for difficulty and trimester.
-
-![Exercise Library](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/exercise_library_1766425918973.png)
-
-### Exercise Detail View
-Detailed exercise information with benefits, starting position, and step-by-step execution instructions.
-
-![Exercise Detail View](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/exercise_detail_1766425947295.png)
-
-### Activity Tracking
-Upload activity data via CSV with instructions and sample template download.
-
-![Activity Tracking](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/activity_dashboard_1766425991634.png)
-
-### Health Monitoring
-Weekly health reports with comprehensive analytics including steps, calories, heart rate, sleep, and exercise summaries.
-
-![Health Monitoring](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/health_dashboard_1766426042243.png)
-
-### Nutrition Guide
-Comprehensive nutrition dashboard with food categories, recommended foods, foods to avoid, and daily tips.
-
-![Nutrition Guide](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/nutrition_dashboard_1766426080430.png)
-
-### Category Detail View
-Browse foods by category with search and trimester filtering.
-
-![Category Detail View](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/category_detail_view_fruits_1766425115208.png)
-
-### Food Detail View
-Complete nutritional information for each food including calories, nutrients, benefits, and trimester recommendations.
-
-![Food Detail View](file:///C:/Users/pream/.gemini/antigravity/brain/143a7f28-e52d-4b65-8ae5-89f521e1398c/food_detail_view_apples_1766425213673.png)
-
----
-
 ## 🛠️ Tech Stack
 
 ### Frontend
