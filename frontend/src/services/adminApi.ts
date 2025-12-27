@@ -3,7 +3,7 @@
  * Centralized API calls for all admin endpoints
  */
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 // Helper function to get auth token
 const getAuthToken = () => localStorage.getItem('token');

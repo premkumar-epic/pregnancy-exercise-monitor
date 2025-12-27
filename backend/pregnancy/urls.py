@@ -25,6 +25,18 @@ urlpatterns = [
 
     # App APIs
     path('api/', include('exercise.urls')),
+
+    # API Documentation
+    path('api/schema/', include([
+        path('', RedirectView.as_view(url='swagger-ui/', permanent=False)),
+        path('download/', RedirectView.as_view(url='/api/schema/yaml/', permanent=False)),
+        path('yaml/', include('drf_spectacular.urls')),
+    ])),
+    path('api/docs/', include([
+        path('', include('drf_spectacular.urls')),
+        path('swagger-ui/', include('drf_spectacular.urls')),
+        path('redoc/', include('drf_spectacular.urls')),
+    ])),
 ]
 
 # Serve media files in development
