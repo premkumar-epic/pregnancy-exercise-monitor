@@ -4,7 +4,6 @@ FROM python:3.10-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV PORT=8000
 
 # Set work directory
 WORKDIR /app
@@ -28,5 +27,5 @@ RUN mkdir -p /app/logs
 # Expose port
 EXPOSE 8000
 
-# Run gunicorn (Railway sets PORT automatically)
-CMD gunicorn --bind 0.0.0.0:$PORT --workers 3 pregnancy.wsgi:application
+# Run gunicorn - Railway will set PORT env var at runtime
+CMD gunicorn --bind 0.0.0.0:${PORT:-8000} --workers 3 pregnancy.wsgi:application
