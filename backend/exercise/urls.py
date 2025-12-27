@@ -4,6 +4,8 @@ from . import views
 from .views import PregnancyProfileView
 from .weekly_report_view import weekly_report
 from .admin_views import admin_analytics, user_list, user_growth_data, activity_trends, delete_user
+from apps.reports.admin_views import change_user_role
+from apps.reports.audit_views import audit_logs
 from .health_views import (
     current_health_vitals, health_vitals_history, 
     check_exercise_safety, health_dashboard_summary
@@ -26,6 +28,20 @@ from .profile_views import (
 )
 from . import extended_views
 
+# CMS imports
+from apps.exercises.cms_views import manage_exercises, manage_exercise_detail
+from apps.nutrition.cms_views import create_nutrition_food, manage_nutrition_food
+from apps.guidance.cms_views import create_guidance_article, manage_guidance_article, create_faq, manage_faq
+
+# Email campaign imports
+from apps.notifications.campaign_views import manage_campaigns, manage_campaign_detail, send_campaign
+
+# Analytics imports
+from apps.reports.analytics_views import retention_metrics, feature_adoption, engagement_metrics
+
+# System health imports
+from apps.reports.health_views import system_health
+
 
 router = DefaultRouter()
 
@@ -44,6 +60,31 @@ urlpatterns = [
     path('user-growth/', user_growth_data, name='user-growth'),
     path('activity-trends/', activity_trends, name='activity-trends'),
     path('admin/users/<int:user_id>/delete/', delete_user, name='delete-user'),
+    path('admin/users/<int:user_id>/change-role/', change_user_role, name='change-user-role'),
+    path('admin/audit-logs/', audit_logs, name='audit-logs'),  # NEW: Audit logs endpoint
+    
+    # CMS Endpoints (Admin only)
+    path('admin/cms/exercises/', manage_exercises, name='cms-exercises'),
+    path('admin/cms/exercises/<int:exercise_id>/', manage_exercise_detail, name='cms-exercise-detail'),
+    path('admin/cms/nutrition/foods/', create_nutrition_food, name='cms-create-food'),
+    path('admin/cms/nutrition/foods/<int:food_id>/', manage_nutrition_food, name='cms-manage-food'),
+    path('admin/cms/guidance/articles/', create_guidance_article, name='cms-create-article'),
+    path('admin/cms/guidance/articles/<int:article_id>/', manage_guidance_article, name='cms-manage-article'),
+    path('admin/cms/faqs/', create_faq, name='cms-create-faq'),
+    path('admin/cms/faqs/<int:faq_id>/', manage_faq, name='cms-manage-faq'),
+    
+    # Email Campaign Endpoints (Admin only)
+    path('admin/campaigns/', manage_campaigns, name='manage-campaigns'),
+    path('admin/campaigns/<int:campaign_id>/', manage_campaign_detail, name='manage-campaign-detail'),
+    path('admin/campaigns/<int:campaign_id>/send/', send_campaign, name='send-campaign'),
+    
+    # Advanced Analytics Endpoints (Admin only)
+    path('admin/analytics/retention/', retention_metrics, name='retention-metrics'),
+    path('admin/analytics/feature-adoption/', feature_adoption, name='feature-adoption'),
+    path('admin/analytics/engagement/', engagement_metrics, name='engagement-metrics'),
+    
+    # System Health Monitoring (Admin only)
+    path('admin/system-health/', system_health, name='system-health'),
     
     # Health Monitoring Endpoints
     path('current-health-vitals/', current_health_vitals, name='current-health-vitals'),

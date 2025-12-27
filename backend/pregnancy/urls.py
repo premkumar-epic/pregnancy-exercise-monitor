@@ -14,6 +14,10 @@ urlpatterns = [
     path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/auth/register/', register_user, name='register'),
     
+    # Health Checks
+    path('health/', include('core.health_urls')),
+    path('ready/', include('core.health_urls')),
+    path('alive/', include('core.health_urls')),
 
     # App APIs
     path('api/', include('exercise.urls')),

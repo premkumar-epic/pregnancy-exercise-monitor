@@ -24,6 +24,24 @@ import PregnancyGuidance from './pages/PregnancyGuidance'
 import PregnancyProgressWidget from './components/PregnancyProgressWidget'
 import HealthMonitoringPanel from './components/HealthMonitoringPanel'
 import NotificationBell from './components/NotificationBell'
+// New Admin Pages
+import NewAdminDashboard from './pages/admin/AdminDashboard'
+import AuditLogs from './pages/admin/AuditLogs'
+import ExerciseManager from './pages/admin/ExerciseManager'
+import ContentManagement from './pages/admin/ContentManagement'
+import NutritionManager from './pages/admin/NutritionManager'
+import GuidanceManager from './pages/admin/GuidanceManager'
+import UserManagement from './pages/admin/UserManagement'
+import CampaignBuilder from './pages/admin/CampaignBuilder'
+import Analytics from './pages/admin/Analytics'
+import SystemHealth from './pages/admin/SystemHealth'
+import EmailCampaigns from './pages/admin/EmailCampaigns'
+import UserProfile from './pages/admin/UserProfile'
+import ExportAuditLogs from './pages/admin/ExportAuditLogs'
+import DashboardWidgets from './pages/admin/DashboardWidgets'
+import EmailTemplates from './pages/admin/EmailTemplates'
+import NotificationCenter from './pages/admin/NotificationCenter'
+import ABTesting from './pages/admin/ABTesting'
 import './index.css'
 
 interface AuthContextType {
@@ -50,8 +68,26 @@ function AnimatedRoutes({ user, logout }: { user: { username: string; role: stri
     return (
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
+          <Route path="/admin" element={<NewAdminDashboard />} />
+          <Route path="/admin/users" element={<UserManagement />} />
+          <Route path="/admin/profile" element={<UserProfile />} />
+          <Route path="/admin/audit-logs" element={<AuditLogs />} />
+          <Route path="/admin/audit-logs/export" element={<ExportAuditLogs />} />
+          <Route path="/admin/content" element={<ContentManagement />} />
+          <Route path="/admin/content/exercises" element={<ExerciseManager />} />
+          <Route path="/admin/content/nutrition" element={<NutritionManager />} />
+          <Route path="/admin/content/guidance" element={<GuidanceManager />} />
+          <Route path="/admin/campaigns" element={<EmailCampaigns />} />
+          <Route path="/admin/campaigns/new" element={<CampaignBuilder />} />
+          <Route path="/admin/campaigns/:id/edit" element={<CampaignBuilder />} />
+          <Route path="/admin/campaigns/templates" element={<EmailTemplates />} />
+          <Route path="/admin/analytics" element={<Analytics />} />
+          <Route path="/admin/widgets" element={<DashboardWidgets />} />
+          <Route path="/admin/notifications" element={<NotificationCenter />} />
+          <Route path="/admin/ab-testing" element={<ABTesting />} />
+          <Route path="/admin/system-health" element={<SystemHealth />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="*" element={<Navigate to="/admin" replace />} />
         </Routes>
       </AnimatePresence>
     )
