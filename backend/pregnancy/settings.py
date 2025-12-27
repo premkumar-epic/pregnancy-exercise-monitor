@@ -29,7 +29,7 @@ if not DEBUG and config('SENTRY_DSN', default=''):
         before_send=lambda event, hint: event if event.get('level') != 'info' else None,
     )
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*').split(',') if not DEBUG else ['localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'corsheaders',
