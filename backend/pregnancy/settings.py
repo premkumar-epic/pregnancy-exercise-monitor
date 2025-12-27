@@ -218,6 +218,14 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=f'AI Pregnancy Care <{
 
 # Security Settings (Production)
 if not DEBUG:
+    # CSRF Settings
+    CSRF_TRUSTED_ORIGINS = [
+        'https://pregnancy-exercise-monitor-production.up.railway.app',
+        'https://*.up.railway.app',
+    ]
+    
+    # SSL/HTTPS Settings
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
