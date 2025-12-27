@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 from rest_framework_simplejwt.views import TokenRefreshView
 from exercise.auth_serializers import CustomTokenObtainPairView
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 from exercise.registration_views import register_user
 
 urlpatterns = [
@@ -27,16 +28,9 @@ urlpatterns = [
     path('api/', include('exercise.urls')),
 
     # API Documentation
-    path('api/schema/', include([
-        path('', RedirectView.as_view(url='swagger-ui/', permanent=False)),
-        path('download/', RedirectView.as_view(url='/api/schema/yaml/', permanent=False)),
-        path('yaml/', include('drf_spectacular.urls')),
-    ])),
-    path('api/docs/', include([
-        path('', include('drf_spectacular.urls')),
-        path('swagger-ui/', include('drf_spectacular.urls')),
-        path('redoc/', include('drf_spectacular.urls')),
-    ])),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
 # Serve media files in development
