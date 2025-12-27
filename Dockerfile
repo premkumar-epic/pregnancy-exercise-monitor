@@ -21,15 +21,11 @@ RUN pip install --upgrade pip && \
 # Copy entire backend directory
 COPY backend/ /app/
 
-# Copy and make entrypoint executable
-COPY backend/entrypoint.sh /app/
-RUN chmod +x /app/entrypoint.sh
-
 # Create logs directory
 RUN mkdir -p /app/logs
 
 # Expose port
 EXPOSE 8000
 
-# Use entrypoint script
-ENTRYPOINT ["/app/entrypoint.sh"]
+# Use simple CMD - Railway will inject PORT
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-8000} --workers 3 pregnancy.wsgi:application"]
