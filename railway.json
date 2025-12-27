@@ -1,63 +1,14 @@
-# Railway Deployment Configuration
-# Railway.app - Completely FREE hosting
-
-# This file is automatically detected by Railway
-# No configuration needed - Railway auto-detects Docker
-
-# What Railway provides for FREE:
-# - 500 hours/month compute
-# - PostgreSQL database (included)
-# - Redis cache (included)
-# - Automatic SSL certificate
-# - Custom domain support
-# - GitHub auto-deployment
-# - Environment variables UI
-# - Logs and metrics
-# - .railway.app subdomain
-
-# To deploy:
-# 1. Sign up at railway.app (free with GitHub)
-# 2. Click "New Project" → "Deploy from GitHub repo"
-# 3. Select this repository
-# 4. Railway auto-detects Dockerfile and deploys
-# 5. Add PostgreSQL: Click "New" → "Database" → "PostgreSQL"
-# 6. Add Redis: Click "New" → "Database" → "Redis"
-# 7. Set environment variables in Railway dashboard
-# 8. Deploy automatically on git push
-
-# Environment variables to set in Railway dashboard:
-# SECRET_KEY=<generate-new-secret-key>
-# DEBUG=False
-# ALLOWED_HOSTS=${
-    {RAILWAY_PUBLIC_DOMAIN
+{
+    "$schema": "https://railway.app/railway.schema.json",
+    "build": {
+        "builder": "DOCKERFILE",
+        "dockerfilePath": "backend/Dockerfile"
+    },
+    "deploy": {
+        "startCommand": "gunicorn --bind 0.0.0.0:$PORT --workers 3 pregnancy.wsgi:application",
+        "healthcheckPath": "/health/",
+        "healthcheckTimeout": 100,
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10
     }
 }
-# SENTRY_DSN=<your-free-sentry-dsn>
-
-# Railway automatically sets:
-# DATABASE_URL (PostgreSQL connection)
-# REDIS_URL (Redis connection)
-# RAILWAY_PUBLIC_DOMAIN (your app domain)
-
-# Free tier limits:
-# - 500 hours/month (about 20 days)
-# - Unlimited bandwidth
-# - Unlimited builds
-# - 1 GB RAM per service
-# - 1 vCPU per service
-
-# Tips for staying within free tier:
-# - App sleeps after 30 min inactivity (wakes on request)
-# - Use multiple Railway accounts if needed
-# - Optimize for low resource usage
-
-# Upgrade only when needed:
-# - $5/month for 500 more hours
-# - Pay only for what you use
-# - No commitment
-
-# Railway is perfect for:
-# - Solo developers
-# - Side projects
-# - MVPs
-# - Learning projects
