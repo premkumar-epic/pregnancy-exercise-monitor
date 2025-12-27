@@ -260,6 +260,10 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
+        'json': {
+            '()': 'pythonjsonlogger.jsonlogger.JsonFormatter',
+            'format': '%(levelname)s %(asctime)s %(module)s %(message)s %(pathname)s %(lineno)d',
+        },
         'verbose': {
             'format': '{levelname} {asctime} {module} {message}',
             'style': '{',
@@ -268,14 +272,14 @@ LOGGING = {
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
+            'formatter': 'json' if not DEBUG else 'verbose',
         },
         'file': {
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': str(BASE_DIR / 'logs' / 'django.log'),
+            'filename': str(BASE_DIR / 'logs' / 'django_json.log'),
             'maxBytes': 10485760,  # 10MB
             'backupCount': 10,
-            'formatter': 'verbose',
+            'formatter': 'json',
         },
     },
     'root': {
