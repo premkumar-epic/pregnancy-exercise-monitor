@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_spectacular',
     'exercise',
     # Feature-based apps
     'apps.exercises',
@@ -172,14 +173,30 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 50,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': config('THROTTLE_ANON', default='100/hour'),
-        'user': config('THROTTLE_USER', default='1000/hour')
+        'anon': config('THROTTLE_ANON', default='100/day'),
+        'user': config('THROTTLE_USER', default='1000/day')
     }
+}
+
+# Documentation Settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Pregnancy Exercise Monitor API',
+    'DESCRIPTION': 'API documentation for the Pregnancy Exercise Monitor system.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_PATCH': True,
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'persistAuthorization': True,
+        'displayOperationId': True,
+    },
 }
 
 # CORS settings
