@@ -28,4 +28,5 @@ RUN mkdir -p /app/logs
 EXPOSE 8000
 
 # Use simple CMD - Railway will inject PORT
-CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-8000} --workers 3 pregnancy.wsgi:application"]
+# Run migrations before starting the server
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:${PORT:-8000} --workers 3 pregnancy.wsgi:application"]
